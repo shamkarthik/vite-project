@@ -16,7 +16,7 @@ function Education({ eduOrganisations }: EducationProps) {
             <img
               src={edu.orgImage}
               alt={edu.organisationName}
-              className="h-12 w-12"
+              className="h-12 w-12 rounded-lg"
             />
             <div className="ml-2">
               <h4 className="text-lg font-semibold">{edu.organisationName}</h4>

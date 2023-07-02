@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material"
-import Contact from "./Contact"
+import Contact, { ContactProps } from "./Contact"
 import Education, { EducationProps } from "./Education"
 import Experience, { ExperienceProps } from "./Experience"
 import Projects, { ProjectsProps } from "./Projects"
@@ -7,40 +7,49 @@ import Projects, { ProjectsProps } from "./Projects"
 const ExperienceDetails: ExperienceProps = {
   organisations: [
     {
-      orgName: "tiger",
-      startEnd: "May 2018 - Present",
-      location: "chennai",
+      orgName: "Tiger Analytics - Senior Analyst",
+      startEnd: "Jan 2023 - Present",
+      location: "Chennai, Tamil Nadu, India",
       orgLogo:
         "https://media.licdn.com/dms/image/C510BAQGoF-AFPRn3YA/company-logo_100_100/0/1544013984165?e=1695859200&v=beta&t=_fjfP-wxytwj5URK0x1OVa7pc2XYXwL1GgLb0sQcQZc",
       projects: [
         {
           prjDesignation: "Software Engineer",
-          projectName: "project A",
-          prjStartEnd: "project date",
-          prjTechStack: ["react", "typescript"],
+          projectName: "App Templates",
+          prjStartEnd: "",
+          prjTechStack: ["React", "Typescript", "Docker"],
           prjDescription: "proj description",
         },
       ],
     },
     {
-      orgName: "hexaware",
-      startEnd: "May 2018 - Present",
-      location: "chennai",
+      orgName: "Hexaware Technologies - Software Engineer",
+      startEnd: "Jan 2021 - Jan 2023",
+      location: "Chennai, Tamil Nadu, India",
       orgLogo:
         "https://media.licdn.com/dms/image/D4D0BAQGGsYVt3SRZjw/company-logo_100_100/0/1685596232074?e=1695859200&v=beta&t=Bedf63_aTvnfg6NSiH9rbxVWpPtKDI4WI9_cvxPLIXo",
       projects: [
         {
-          prjDesignation: "test designation",
-          projectName: "project A",
-          prjStartEnd: "project date",
-          prjTechStack: ["react", "typescript"],
+          prjDesignation: "Software Engineer",
+          projectName: "Software Development Platform (RapidX) - SDLC Automation",
+          prjStartEnd: "",
+          prjTechStack: [
+            "Microservices",
+            "NestJs",
+            "React",
+            "Azure",
+            "MongoDB",
+            ".NET",
+            "Docker",
+            "Typescript",
+          ],
           prjDescription: "proj description",
         },
         {
           prjDesignation: "Associate Software Engineer",
-          projectName: "project A",
-          prjStartEnd: "project date",
-          prjTechStack: ["react", "typescript"],
+          projectName: "Automaton - Custom RPA Platform",
+          prjStartEnd: "",
+          prjTechStack: ["Python", "Angular", "MariaDB", "Electron"],
           prjDescription: "proj description",
         },
       ],
@@ -70,6 +79,13 @@ const projectDetails: ProjectsProps = {
     },
   ],
 }
+
+const contactDetails: ContactProps = {
+  contacts: {
+    email: "shamkarthik88@gmail.com",
+    contact: "+91 9841901916",
+  },
+}
 const leftTabs = [
   {
     element: <Experience {...ExperienceDetails} />,
@@ -86,7 +102,7 @@ const leftTabs = [
 ]
 const rightTabs = [
   {
-    element: <Contact />,
+    element: <Contact {...contactDetails} />,
     key: "contact",
   },
 ]
@@ -101,7 +117,7 @@ const MoreDetails = () => {
         ))}
       </div>
       {rightTabs.map((tab) => (
-        <Paper key={tab.key} className="p-5 mb-5 max-h-40">
+        <Paper key={tab.key} className="p-5 mb-5 max-h-96">
           {tab.element}
         </Paper>
       ))}

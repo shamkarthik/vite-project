@@ -1,4 +1,5 @@
-import { Avatar, Link, Paper, Stack, useTheme } from "@mui/material"
+import VisibilityIcon from "@mui/icons-material/Visibility"
+import { Avatar, Button, Link, Paper, Stack, useTheme } from "@mui/material"
 import SkillBasic, { SkillBasicProps } from "./SkillBasic"
 
 export interface ProfileBasicProps {
@@ -61,7 +62,7 @@ function ProfileBasic({
                     sx={{ width: 25, height: 25 }}
                     variant="rounded"
                   />
-                  <p className="text-sm text-gray-500">{org.name}</p>
+                  <p className="sm:text-sm text-gray-500">{org.name}</p>
                 </div>
               ))}
             </div>
@@ -71,15 +72,26 @@ function ProfileBasic({
                   key={contact.contactName}
                   aria-label={contact.contactName}
                   href={contact.contactUrl}
+                  target="_blank"
                 >
                   <img
                     alt={contact.contactName}
                     src={contact.contactImage}
-                    className="h-10 w-10"
+                    className="h-10 w-10 rounded-lg"
                   />
                 </Link>
               ))}
             </Stack>
+            <Button
+              startIcon={<VisibilityIcon />}
+              variant="contained"
+              style={{ fontWeight: "bold", minWidth: 100, maxWidth: 200 }}
+              href={resumeLink}
+              target="_blank"
+              className="justify-self-center"
+            >
+              View Resume
+            </Button>
           </div>
         </div>
       </Paper>

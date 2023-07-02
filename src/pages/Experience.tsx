@@ -21,7 +21,11 @@ function Experience({ organisations }: ExperienceProps) {
         {organisations.map((org) => (
           <li key={org.orgName} className="mb-10">
             <div className="flex mb-3">
-              <img src={org.orgLogo} alt="Company Logo" className="h-12 w-12" />
+              <img
+                src={org.orgLogo}
+                alt="Company Logo"
+                className="h-12 w-12 rounded-lg"
+              />
               <div className="ml-2">
                 <h4 className="text-lg font-semibold">{org.orgName}</h4>
                 <p className="text-gray-200">{org.startEnd}</p>
