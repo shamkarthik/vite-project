@@ -1,12 +1,15 @@
-import "./App.css"
-import { ThemeProvider } from "./context/ThemeContext"
-import Home from "./pages/Home"
+import { Provider } from "react-redux"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { store } from "./redux/store"
+import { routes } from "./routes"
 
 function App() {
+  console.log("App")
+  const router = createBrowserRouter(routes)
   return (
-    <ThemeProvider>
-      <Home />
-    </ThemeProvider>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   )
 }
 
