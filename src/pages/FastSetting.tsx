@@ -4,6 +4,7 @@ import SettingsIcon from "@mui/icons-material/Settings"
 import ShareIcon from "@mui/icons-material/Share"
 import SpeedDial from "@mui/material/SpeedDial"
 import SpeedDialAction from "@mui/material/SpeedDialAction"
+import { useState } from "react"
 import { useContextTheme } from "../context/ThemeContext"
 // import { toggleTheme } from "../redux/slice/themeSlice"
 
@@ -12,6 +13,12 @@ export default function FastSetting() {
   // const { theme } = useAppSelector((state) => state.theme)
   // const { theme, toggleTheme } = useContext(ThemeContext)
   const { themeMode, toggleTheme } = useContextTheme()
+  const [open, setOpen] = useState(false)
+  // const handleOpen = () => setOpen(true)
+  // const handleClose = () => setOpen(false)
+  const handleOpen = () => {
+    setOpen(!open)
+  }
   console.log("rendered")
   //   const [visible, setVisible] = useState(true)
 
@@ -66,13 +73,21 @@ export default function FastSetting() {
       icon={<SettingsIcon />}
       // onMouseEnter={handleHover}
       // onMouseLeave={handleLeave}
+      // onClose={handleClose}
+      onClick={handleOpen}
+      open={open}
     >
       {actions.map((action) => (
         <SpeedDialAction
           key={action.name}
           icon={action.icon}
           tooltipTitle={action.name}
-          onClick={action.onClick}
+          onClick={(e) => {
+            e.stopPropagation()
+            action.onClick()
+            // handleClose()
+          }}
+          // tooltipOpen
         />
       ))}
     </SpeedDial>

@@ -8,7 +8,7 @@ export interface EducationProps {
 }
 function Education({ eduOrganisations }: EducationProps) {
   return (
-    <div>
+    <>
       <h3 className="text-lg font-semibold mb-4">Education</h3>
       <ul className="list-disc mt-2">
         {eduOrganisations.map((edu) => (
@@ -26,7 +26,7 @@ function Education({ eduOrganisations }: EducationProps) {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   )
 }
 

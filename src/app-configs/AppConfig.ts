@@ -1,7 +1,7 @@
 import { ApplicationThemeConfigType } from "./types/AppConfigTypes"
 
 const themeConfig: ApplicationThemeConfigType = {
-  themeMode: "dark",
+  themeMode: "light",
 }
 
 export const appConfig = { themeConfig }
