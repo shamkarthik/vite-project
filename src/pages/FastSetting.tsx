@@ -4,13 +4,14 @@ import SettingsIcon from "@mui/icons-material/Settings"
 import ShareIcon from "@mui/icons-material/Share"
 import SpeedDial from "@mui/material/SpeedDial"
 import SpeedDialAction from "@mui/material/SpeedDialAction"
-import { useAppDispatch, useAppSelector } from "../redux/hooks"
-import { toggleTheme } from "../redux/slice/themeSlice"
+import { useContextTheme } from "../context/ThemeContext"
+// import { toggleTheme } from "../redux/slice/themeSlice"
 
 export default function FastSetting() {
-  const dispatch = useAppDispatch()
-  const { theme } = useAppSelector((state) => state.theme)
+  // const dispatch = useAppDispatch()
+  // const { theme } = useAppSelector((state) => state.theme)
   // const { theme, toggleTheme } = useContext(ThemeContext)
+  const { themeMode, toggleTheme } = useContextTheme()
   console.log("rendered")
   //   const [visible, setVisible] = useState(true)
 
@@ -38,13 +39,14 @@ export default function FastSetting() {
   //     setVisible(false)
   //   }
   const switchTheme = () => {
-    dispatch(toggleTheme())
+    // dispatch(toggleTheme())
+    toggleTheme()
   }
 
   const actions = [
     { icon: <ShareIcon />, name: "Share", onClick: () => {} },
     {
-      icon: theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />,
+      icon: themeMode === "dark" ? <LightModeIcon /> : <DarkModeIcon />,
       name: "Switch Theme",
       onClick: switchTheme,
     },

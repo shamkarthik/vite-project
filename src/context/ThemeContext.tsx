@@ -1,30 +1,49 @@
-import { CssBaseline, ThemeProvider as MUIThemeProvider, Theme } from "@mui/material"
-import React, { ReactNode, createContext, useContext, useState } from "react"
+import {
+  CssBaseline,
+  ThemeProvider as MUIThemeProvider,
+  Theme,
+  useMediaQuery,
+} from "@mui/material"
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+} from "react"
+import { appConfig } from "../app-configs/AppConfig"
 import dark from "../theme/dark"
 import light from "../theme/light"
 
-type ThemeType = "dark" | "light"
+type ThemeModeType = "dark" | "light"
 
 interface ThemeContextProps {
-  theme: ThemeType
+  themeMode: ThemeModeType
   toggleTheme: () => void
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({
-  theme: "light",
+  themeMode: "light",
   toggleTheme: () => {},
 })
 
-export const useTheme = (): ThemeContextProps => useContext(ThemeContext)
+export const useContextTheme = (): ThemeContextProps => useContext(ThemeContext)
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeType>("dark")
-
+  const browserPrefersMode = useMediaQuery("(prefers-color-scheme: dark)")
+    ? "dark"
+    : "light"
+  const [themeMode, setThemeMode] = useState<ThemeModeType>(
+    browserPrefersMode ?? appConfig.themeConfig.themeMode
+  )
+  // useEffect(() => {
+  //   if (browserPrefersMode !== themeMode) setThemeMode(browserPrefersMode)
+  // }, [browserPrefersMode])
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
+    setThemeMode((prevThemeMode) => (prevThemeMode === "light" ? "dark" : "light"))
   }
-
-  const themeList: { mode: ThemeType; theme: Theme }[] = [
+  console.log(browserPrefersMode)
+  const themeList: { mode: ThemeModeType; theme: Theme }[] = [
     {
       mode: "light",
       theme: light,
@@ -34,15 +53,15 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       theme: dark,
     },
   ]
-  const getTheme = (mode: ThemeType) => {
-    const selectedTheme = themeList.find((item) => item.mode === mode)
+  const theme = useMemo(() => {
+    const selectedTheme = themeList.find((item) => item.mode === themeMode)
     if (selectedTheme) return selectedTheme.theme
     return light
-  }
+  }, [themeMode])
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <MUIThemeProvider theme={getTheme(theme)}>
+    <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
+      <MUIThemeProvider theme={theme}>
         <CssBaseline enableColorScheme />
         {children}
       </MUIThemeProvider>

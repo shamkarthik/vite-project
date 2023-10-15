@@ -1,15 +1,16 @@
-import { Provider } from "react-redux"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import { store } from "./redux/store"
+import { ThemeProvider } from "./context/ThemeContext"
 import { routes } from "./routes"
 
 function App() {
   console.log("App")
   const router = createBrowserRouter(routes)
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
+    <ThemeProvider>
       <RouterProvider router={router} />
-    </Provider>
+    </ThemeProvider>
+    // </Provider>
   )
 }
 

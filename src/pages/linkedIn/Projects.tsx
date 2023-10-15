@@ -12,7 +12,7 @@ function Projects({ projects }: ProjectsProps) {
       <h3 className="text-lg font-semibold">Projects</h3>
       <ul>
         {projects.map((proj) => (
-          <li>
+          <li key={proj.projectName}>
             <h4 className="text-lg font-semibold">{proj.projectName}</h4>
             <p className="text-gray-600">{proj.byLine}</p>
             <p>{proj.projectDescription}</p>

@@ -8,7 +8,10 @@ function Contact({ contacts }: ContactProps) {
       <h3 className="text-lg font-semibold mb-2">Contact</h3>
       <ul>
         {Object.keys(contacts).map((contact) => (
-          <li className="break-words mb-4">{`${contact}: ${contacts[contact]}`}</li>
+          <li
+            key={contact}
+            className="break-words mb-4"
+          >{`${contact}: ${contacts[contact]}`}</li>
         ))}
       </ul>
     </div>
