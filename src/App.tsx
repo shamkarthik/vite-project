@@ -1,9 +1,10 @@
+import { inject } from "@vercel/analytics"
 import { RouterProvider, createHashRouter } from "react-router-dom"
 import { ThemeProvider } from "./context/ThemeContext"
 import { routes } from "./routes"
 
 function App() {
-  console.log("App")
+  inject()
   const router = createHashRouter(routes)
   return (
     // <Provider store={store}>
