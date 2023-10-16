@@ -1,5 +1,5 @@
 import { Theme } from "@mui/material"
-import { ThemeModeType } from "../redux/slice/themeSlice"
+import { ThemeModeType } from "../context/ThemeContext"
 import dark from "./dark"
 import light from "./light"
 

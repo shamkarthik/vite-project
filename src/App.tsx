@@ -1,10 +1,10 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { RouterProvider, createHashRouter } from "react-router-dom"
 import { ThemeProvider } from "./context/ThemeContext"
 import { routes } from "./routes"
 
 function App() {
   console.log("App")
-  const router = createBrowserRouter(routes)
+  const router = createHashRouter(routes)
   return (
     // <Provider store={store}>
     <ThemeProvider>

@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-export type ThemeType = "dark" | "light"
+type ThemeModeType = "dark" | "light"
 
 export interface ThemeState {
-  theme: ThemeType
+  theme: ThemeModeType
 }
 
 const initialState: ThemeState = {

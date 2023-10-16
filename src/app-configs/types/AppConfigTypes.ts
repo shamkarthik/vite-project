@@ -1,4 +1,4 @@
-import { ThemeModeType } from "../../redux/slice/themeSlice"
+import { ThemeModeType } from "../../context/ThemeContext"
 
 export type ApplicationThemeConfigType = {
   themeMode: ThemeModeType

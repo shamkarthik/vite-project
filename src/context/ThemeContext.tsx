@@ -15,7 +15,7 @@ import { appConfig } from "../app-configs/AppConfig"
 import dark from "../theme/dark"
 import light from "../theme/light"
 
-type ThemeModeType = "dark" | "light"
+export type ThemeModeType = "dark" | "light"
 
 interface ThemeContextProps {
   themeMode: ThemeModeType
